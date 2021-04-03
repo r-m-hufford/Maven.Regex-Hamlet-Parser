@@ -45,7 +45,7 @@ public class HamletParser {
     public String changePattern(String fileToSearch, String patternToFind, String replacementText) {
         Pattern pattern = Pattern.compile(patternToFind);
         Matcher matcher = pattern.matcher(fileToSearch);
-        return matcher.replaceAll(replacementText);
+        return (matcher.replaceAll(replacementText));
     }
 
     public Boolean findPattern(String patternToFind, String fileToSearch) {
@@ -53,6 +53,10 @@ public class HamletParser {
         Matcher matcher = pattern.matcher(fileToSearch);
         Boolean patternPresentInFile = matcher.find();
         return patternPresentInFile;
+    }
+
+    public void setHamletData(String newText) {
+        this.hamletData = newText;
     }
 
     public void createAFile() {
@@ -69,10 +73,10 @@ public class HamletParser {
         }
     }
 
-    public void writeToAFile() {
+    public void writeToAFile(String newHamlet) {
         try {
-            FileWriter writer = new FileWriter("src/main/resources/newFFFile.txt");
-            writer.write("scoundrels rule the world");
+            FileWriter writer = new FileWriter("src/main/resources/hamlet.txt");
+            writer.write(newHamlet);
             writer.close();
             System.out.println("wrote to the file");
         } catch (IOException e){

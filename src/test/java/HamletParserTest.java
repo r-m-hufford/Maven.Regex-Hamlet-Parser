@@ -19,7 +19,7 @@ public class HamletParserTest {
 
     @Test
     public void testChangeHamletToLeon() {
-        String actual = hamletParser.changePattern(testString, "Hamlet", "Leon");
+        String actual = hamletParser.changePattern(hamletText, "Hamlet", "Leon");
         Boolean result = hamletParser.findPattern("Hamlet", actual);
 
         Assert.assertFalse(result);
@@ -46,6 +46,29 @@ public class HamletParserTest {
         Boolean result = hamletParser.findPattern("Hamlet", hamletText);
 
         Assert.assertTrue(result);
+    }
+
+    @Test
+    public void testChangeHamletDataLeon() {
+        String actual = hamletParser.changePattern(hamletText, "Hamlet", "Leon");
+        hamletParser.setHamletData(actual);
+        Boolean result = hamletParser.findPattern("Hamlet", hamletParser.getHamletData());
+
+
+        Assert.assertFalse(result);
+
+    }
+
+    @Test
+    public void testChangeHamletDataTariq() {
+        String actual = hamletParser.changePattern(hamletText, "Horatio", "Tariq");
+        hamletParser.setHamletData(actual);
+        Boolean result = hamletParser.findPattern("Horatio", hamletParser.getHamletData());
+
+
+        System.out.println(hamletParser.getHamletData());
+        Assert.assertFalse(result);
+
     }
 
 }
