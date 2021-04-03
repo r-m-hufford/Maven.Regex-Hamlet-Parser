@@ -19,28 +19,33 @@ public class HamletParserTest {
 
     @Test
     public void testChangeHamletToLeon() {
-        //String actual = hamletParser.changePattern(testString, "Hamlet", "Leon");
+        String actual = hamletParser.changePattern(testString, "Hamlet", "Leon");
+        Boolean result = hamletParser.findPattern("Hamlet", actual);
 
-        System.out.println(hamletParser.changePattern(testString, "Hamlet", "Leon"));
+        Assert.assertFalse(result);
+
     }
 
     @Test
     public void testChangeHoratioToTariq() {
+        String actual = hamletParser.changePattern(testString, "Horatio", "Tariq");
+        Boolean result = hamletParser.findPattern("Horatio", actual);
 
-
+        Assert.assertFalse(result);
     }
 
     @Test
     public void testFindHoratio() {
-        Boolean result = hamletParser.findPattern("Horatio", hamletParser.getHamletData());
+        Boolean result = hamletParser.findPattern("Horatio", hamletText);
 
         Assert.assertTrue(result);
     }
 
     @Test
     public void testFindHamlet() {
-        Boolean result = hamletParser.findPattern("Hamlet", hamletParser.getHamletData());
+        Boolean result = hamletParser.findPattern("Hamlet", hamletText);
 
         Assert.assertTrue(result);
     }
+
 }
