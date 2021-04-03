@@ -43,13 +43,13 @@ public class HamletParser {
     }
 
     public String changePattern(String fileToSearch, String patternToFind, String replacementText) {
-        Pattern pattern = Pattern.compile(patternToFind);
+        Pattern pattern = Pattern.compile(patternToFind, Pattern.CASE_INSENSITIVE);
         Matcher matcher = pattern.matcher(fileToSearch);
         return (matcher.replaceAll(replacementText));
     }
 
     public Boolean findPattern(String patternToFind, String fileToSearch) {
-        Pattern pattern = Pattern.compile(patternToFind);
+        Pattern pattern = Pattern.compile(patternToFind, Pattern.CASE_INSENSITIVE);
         Matcher matcher = pattern.matcher(fileToSearch);
         Boolean patternPresentInFile = matcher.find();
         return patternPresentInFile;
